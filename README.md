@@ -1,6 +1,6 @@
 # Network Automation Forum - Autocon4 - RAG And MCP Session
 
-Repository for NAF AC4 in Austin, Texas - RAG Session
+Repository for NAF AC5 in Munich, Germany - RAG Session
 John Capobianco 
 
 ## Getting Started
@@ -9,13 +9,37 @@ John Capobianco
 
 2. Python - Make sure you have Python installed. You can download it from [python.org](https://www.python.org/downloads/).
 
+
+### IMPORTANT NOTE #### 
+
+pyATS is best run and to ensure the whole class is on the same version please use python 3.10. You can have multiple versions of python installed on your machine, but please ensure you are using python 3.10 for this class. You can check your python version with the following command:
+
+```bash
+
+python --version
+
+```
+
+To change your python version: 
+
+```bash
+
+# On Windows, you can use the py launcher to specify the version of python you want to use
+py -3.10 -m venv venv
+
+# On macOS/Linux, you can use the following command to create a virtual environment with python 3.10
+
+python3.10 -m venv venv
+
+```
+
 3. wsl - If you are using Windows, please ensure you have WSL2 installed. You can follow the instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
 4. Ubuntu - If you are using WSL2, please ensure you have Ubuntu installed. You can follow the instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
 6. Clone this repository to your local machine:
    ```bash
-   git clone https://github.com/automateyournetwork/NAF_AC4
+   git clone https://github.com/automateyournetwork/NAF_AC5
    ```
 
 7. Virtual Environment - It's a good practice to create a virtual environment for your Python projects. You can do this using the following command:
@@ -44,9 +68,9 @@ export OPENAI_API_KEY="Key Provided By John"
 
 11. Install Required Packages - Use the following command to install the required packages:
     ```bash
-    (venv)% cd NAF_AC4
-    (venv)NAF_AC4 %python3 -m pip install -r requirements.txt
-    (vent)NAF_AC4 npm install -g @toon-format/cli
+    (venv)% cd NAF_AC5
+    (venv)NAF_AC5 %python3 -m pip install -r requirements.txt
+    (vent)NAF_AC5 npm install -g @toon-format/cli
     ```
 
 12. Open the project in Visual Studio Code:
