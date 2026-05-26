@@ -1,16 +1,16 @@
 ---
 devices:
-  CAT9k_AO:
+  NAF_AC5#:
     alias: "Sandbox Router01"
     type: "router"
     os: "iosxe"
-    platform: CSCAT9k_AOkv
+    platform: CAT9k_AOkv
     credentials:
       default:
         username: ptcapo
-        password: 3NaR_-f3s0En
+        password: gZ0L0f0-O_00s
       enable:
-        password: 3NaR_-f3s0En
+        password: gZ0L0f0-O_00s
     connections:
       cli:
         protocol: ssh
