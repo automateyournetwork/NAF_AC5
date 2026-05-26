@@ -1,4 +1,4 @@
-# Network Automation Forum - Autocon4 - RAG And MCP Session
+# Network Automation Forum - Autocon5 - RAG And MCP Session
 
 Repository for NAF AC5 in Munich, Germany - RAG Session
 John Capobianco 
