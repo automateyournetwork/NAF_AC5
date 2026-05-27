@@ -29,8 +29,8 @@ py -3.10 -m venv venv
 
 # On macOS/Linux, you can use the following command to create a virtual environment with python 3.10
 
+pyenv local 3.10.14
 python3.10 -m venv venv
-
 ```
 
 3. wsl - If you are using Windows, please ensure you have WSL2 installed. You can follow the instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install).
