@@ -105,12 +105,15 @@ def call_tool(name: str, args: dict) -> dict:
 def tool_to_openai(tool: dict) -> dict:
     schema = tool.get("inputSchema", {})
     return {
-        "name": tool["name"],
-        "description": tool.get("description", ""),
-        "parameters": {
-            "type": "object",
-            "properties": schema.get("properties", {}),
-            "required": schema.get("required", [])
+        "type": "function",
+        "function": {
+            "name": tool["name"],
+            "description": tool.get("description", ""),
+            "parameters": {
+                "type": "object",
+                "properties": schema.get("properties", {}),
+                "required": schema.get("required", [])
+            }
         }
     }
 
@@ -145,20 +148,25 @@ def react_agent():
             response = client.chat.completions.create(
                 model="gpt-5.5",
                 messages=messages,
-                functions=openai_tools,
-                function_call="auto"
+                tools=openai_tools,
+                tool_choice="auto"
             )
             choice = response.choices[0].message
 
-            if choice.function_call:
-                fname = choice.function_call.name
-                args = json.loads(choice.function_call.arguments)
+            if choice.tool_calls:
+                tool_call = choice.tool_calls[0]
+                fname = tool_call.function.name
+                args = json.loads(tool_call.function.arguments)
                 print(f"[AGENT] Calling MCP tool: {fname} with args: {args}")
 
                 tool_result = call_tool(fname, args)
 
-                messages.append({"role": "assistant", "content": None, "function_call": choice.function_call})
-                messages.append({"role": "function", "name": fname, "content": json.dumps(tool_result)})
+                messages.append({"role": "assistant", "tool_calls": choice.tool_calls})
+                messages.append({
+                    "role": "tool",
+                    "tool_call_id": tool_call.id,
+                    "content": json.dumps(tool_result)
+                })
 
                 final_response = client.chat.completions.create(
                     model="gpt-5.5",
@@ -172,7 +180,7 @@ def react_agent():
                 messages.append({"role": "assistant", "content": choice.content})
 
         except Exception as e:
-            error_msg = f"\u26a0\ufe0f Error during tool call or reply: {e}"
+            error_msg = f"⚠️ Error during tool call or reply: {e}"
             print("\nAgent:", error_msg)
             messages.append({"role": "assistant", "content": error_msg})
 
