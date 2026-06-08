@@ -18,3 +18,20 @@ devices:
         port: 22
         arguments:
           connection_timeout: 360
+  NAF_SKYNET#:
+    alias: "Skynet Router"
+    type: "router"
+    os: "iosxe"
+    credentials:
+      default:
+        username: itential
+        password: itential
+      enable:
+        password: itential
+    connections:
+      cli:
+        protocol: ssh
+        ip: 3.64.194.183
+        port: 22
+        arguments:
+          connection_timeout: 360
