@@ -1,23 +1,5 @@
 ---
 devices:
-  NAF_AC5#:
-    alias: "Sandbox Router01"
-    type: "router"
-    os: "iosxe"
-    platform: CAT9k_AOkv
-    credentials:
-      default:
-        username: ptcapo
-        password: A5kUeg_4Fa0_
-      enable:
-        password: A5kUeg_4Fa0_
-    connections:
-      cli:
-        protocol: ssh
-        ip: devnetsandboxiosxec9k.cisco.com
-        port: 22
-        arguments:
-          connection_timeout: 360
   NAF_SKYNET#:
     alias: "Skynet Router"
     type: "router"
